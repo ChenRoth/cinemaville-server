@@ -7,4 +7,15 @@ router.get('/', async function (req, res, next) {
     res.send(movies);
 });
 
+router.get('/:id', async function (req, res, next) {
+    const { id } = req.params;
+    try {
+        const movie = await Movie.findById(id).exec();
+        res.send(movie);
+    } catch (e) {
+        res.status(404).send('not found');
+    }
+});
+
+
 module.exports = router;
