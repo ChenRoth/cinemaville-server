@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const URL = 'mongodb://localhost:27017/cinemaville';
 mongoose.connect(URL, { useNewUrlParser: true });
@@ -12,6 +13,7 @@ var movieRouter = require('./routes/movies');
 
 var app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
