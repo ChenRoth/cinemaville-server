@@ -9,4 +9,7 @@ const movieSchema = mongoose.Schema({
     video: String,
 });
 
-export const Movie = mongoose.model('movie', movieSchema);
+const Movie = mongoose.model('movie', movieSchema);
+module.exports = {
+    Movie,
+}

@@ -5,8 +5,8 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 
 const URL = 'mongodb://localhost:27017/cinemaville';
+const dbClient = mongoose.connect(URL, { useNewUrlParser: true });
 
-export const dbClient = mongoose.connect(URL, { useNewUrlParser: true });
 
 var indexRouter = require('./routes/index');
 var movieRouter = require('./routes/movies');
@@ -21,4 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/movies', movieRouter)
-module.exports = app;
+module.exports = {
+    app,
+    dbClient
+};
+
