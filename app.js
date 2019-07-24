@@ -9,7 +9,8 @@ const URL = 'mongodb://localhost:27017/cinemaville';
 mongoose.connect(URL, { useNewUrlParser: true });
 
 var indexRouter = require('./routes/index');
-var movieRouter = require('./routes/movies');
+const movieRouter = require('./routes/movies');
+const genreRouter = require('./routes/genres');
 
 var app = express();
 
@@ -21,7 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/movies', movieRouter)
+app.use('/movies', movieRouter);
+app.use('/genres', genreRouter);
 module.exports = {
     app,
 };
